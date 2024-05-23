@@ -1,13 +1,15 @@
 package webdrivermethod;
 
+import java.util.Scanner;
+
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class WorkingWithWebDriverMethod {
-
+public class WorkingWithWebDriverMethod 
+{
+	static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
 		WebDriver driver = new ChromeDriver();		// open the browser 
@@ -61,9 +63,6 @@ public class WorkingWithWebDriverMethod {
 
 		
 		driver.close();
-		driver.quit();
-		
-		
+		driver.quit();	
 	}
-
 }
