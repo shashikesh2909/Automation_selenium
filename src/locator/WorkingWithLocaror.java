@@ -12,7 +12,7 @@ public class WorkingWithLocaror {
 	public static void main(String[] args) throws InterruptedException 
 	{
 		
-		workingWithClassName();
+		xPathMultipleAttribute();
 	}
 	
 	public static void tag_name()
@@ -58,5 +58,16 @@ public class WorkingWithLocaror {
 		driver.findElement(By.name("password")).sendKeys("xyz123456789");
 		driver.findElement(By.className("_acap")).click();
 	}
-
+	
+	public static void xPathMultipleAttribute() throws InterruptedException 
+	{
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		Thread.sleep(8000);
+		driver.findElement(By.xpath("//input[@class='oxd-input oxd-input--active' and @name='username']")).sendKeys("Admin");
+		driver.findElement(By.xpath("//input[@class='oxd-input oxd-input--active' and @name='passowrd']")).sendKeys("admin123");
+		driver.findElement(By.xpath("//button[@type='submit']/ancestor::div[@class='oxd-form-actions orangehrm-login-action']")).click();
+	}
 }

@@ -27,7 +27,7 @@ public class SpotifyPlayMusic {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+//button[data-testid='play-button']
 		driver.findElement(By.xpath("//input[@id='login-username']")).sendKeys("shashikesh95@gmail.com");
 		driver.findElement(By.xpath("//input[@id='login-password']")).sendKeys("Delhi123456");
 		driver.findElement(By.xpath("//span[text()='Log In']")).click();
@@ -58,9 +58,6 @@ public class SpotifyPlayMusic {
 		}
 		
 		driver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div[2]/main/section/div[3]/div[2]/div/div/div/button")).click();
-
-		//driver.findElement(By.cssSelector("//*[@aria-label=\"Play\"]")).click();
-
 
 	}
 }
