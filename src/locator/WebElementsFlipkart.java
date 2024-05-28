@@ -1,4 +1,4 @@
-package locator;
+ package locator;
 
 import java.util.List;
 import org.openqa.selenium.By;
@@ -21,5 +21,6 @@ public class WebElementsFlipkart {
 		{
 			System.out.println(al.get(i).getText() + " " + al1.get(i).getText());
 		}
+		
 	}
 }
