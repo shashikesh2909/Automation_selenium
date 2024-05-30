@@ -1,6 +1,8 @@
 
 package locator;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,15 +13,15 @@ public class PaytmMovies
 	public static void main(String[] args) throws InterruptedException 
 	{
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://paytm.com/");
 		driver.manage().window().maximize(); 
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//img[@src='https://assetscdn1.paytm.com/images/catalog/view_item/733295/1626259710574.png']")).click();
-		driver.findElement(By.xpath("//div[text()='Delhi/NCR']")).click();
-		driver.findElement(By.xpath("//img[@alt='Furiosa: A Mad Max Saga']")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//button[text()='Proceed']")).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.get("https://paytm.com/");
+
+		Actions act = new Actions(driver) ;
 		
-		
+		driver.findElement(By.xpath("//a[text()='Paytm for Consumer']")).click();
+		act.moveToElement(driver.findElement(By.xpath("//a[text()='Payments']"))).perform();
+		act.moveToElement(driver.findElement(By.xpath("//a[text()='Bill Payment & Recharges']"))).perform();
+		act.click().perform();
 	}
 }
