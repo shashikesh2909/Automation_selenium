@@ -13,7 +13,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class KeyboardActionsMethod {
 
-	public static void main(String[] args) throws AWTException 
+	public static void main(String[] args) throws AWTException, InterruptedException 
 	{
 		EnumRobot();
 	}
@@ -46,7 +46,7 @@ public class KeyboardActionsMethod {
 		r.keyRelease(KeyEvent.VK_I);
 	}
 	
-	public static void EnumRobot() throws AWTException
+	public static void EnumRobot() throws AWTException, InterruptedException
 	{
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -58,20 +58,22 @@ public class KeyboardActionsMethod {
 		
 		Robot r = new Robot();
 		r.keyPress(KeyEvent.VK_DOWN);
-		for (int i=0 ; i<6 ;i++)
+
+		for (int i=0 ; i<10 ;i++)
 		{
+			Thread.sleep(1000);
 			r.keyPress(KeyEvent.VK_DOWN);
 		}
-	//	r.keyPress(KeyEvent.VK_ENTER);
+		r.keyPress(KeyEvent.VK_ENTER);
 		
-//		for (int i=0 ; i<12 ;i++)
-//		{
-//			r.keyRelease(KeyEvent.VK_TAB);
-//		}
-//		r.keyRelease(KeyEvent.VK_ENTER);
-//	
-//		r.keyRelease(KeyEvent.VK_CONTROL);
-//		r.keyRelease(KeyEvent.VK_SHIFT);
-//		r.keyRelease(KeyEvent.VK_I);
+		for (int i=0 ; i<12 ;i++)
+		{
+			r.keyRelease(KeyEvent.VK_TAB);
+		}
+		r.keyRelease(KeyEvent.VK_ENTER);
+	
+		r.keyRelease(KeyEvent.VK_CONTROL);
+		r.keyRelease(KeyEvent.VK_SHIFT);
+		r.keyRelease(KeyEvent.VK_I);
 	}
 }

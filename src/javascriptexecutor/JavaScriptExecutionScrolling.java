@@ -13,7 +13,7 @@ public class JavaScriptExecutionScrolling {
 
 	public static void main(String[] args) throws InterruptedException
 	{
-		scrollIntoView();
+		hiddenWebElement();
 	}
 	
 	public static void scroll() throws InterruptedException
@@ -30,7 +30,6 @@ public class JavaScriptExecutionScrolling {
 		Thread.sleep(500);
 		}
 	}
-
 	
 	public static void scrollTill() throws InterruptedException
 	{
@@ -47,7 +46,6 @@ public class JavaScriptExecutionScrolling {
 		js.executeScript("window.scrollBy("+x+","+y+")");
 	}
 	
-	
 	public static void scrollIntoView() throws InterruptedException
 	{
 		WebDriver driver = new ChromeDriver() ;
@@ -60,5 +58,39 @@ public class JavaScriptExecutionScrolling {
 		JavascriptExecutor js = (JavascriptExecutor)driver ;
 		js.executeScript("arguments[0].scrollIntoView(true)",we);
 	}
+	
+	public static void handleDisabledWebElement() throws InterruptedException
+	{
+		WebDriver driver = new ChromeDriver() ;
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.get("https://demoapps.qspiders.com/ui?scenario=1");
+		driver.findElement(By.xpath("//li[text()='Disabled']")).click();
+		
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver ;
+		Thread.sleep(1000);
+		js.executeScript("document.getElementById('name').value='Shashikesh Kumar'");
+		Thread.sleep(1000);
+		js.executeScript("document.getElementById('email').value='Shashikesh95@gmail.com'");
+		Thread.sleep(1000);
+		js.executeScript("document.getElementById('password').value='123456'");
+	}
+	
+	public static void hiddenWebElement() throws InterruptedException
+	{
+		WebDriver driver = new ChromeDriver() ;
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.get("https://www.facebook.com/r.php");
+		
+		WebElement hidden = driver.findElement(By.xpath("//input[@name='custom_gender']"));
+		JavascriptExecutor js = (JavascriptExecutor) driver ;
+		Thread.sleep(1000);
+		js.executeScript("arguments[0].value='Transgender'",hidden);
+	}
+	
+	
+	
 }
 
