@@ -59,7 +59,7 @@ public class JavaScriptExecutionScrolling {
 		js.executeScript("arguments[0].scrollIntoView(true)",we);
 	}
 	
-	public static void handleDisabledWebElement() throws InterruptedException
+	public static void handleDisabledWebElement() throws InterruptedException 
 	{
 		WebDriver driver = new ChromeDriver() ;
 		driver.manage().window().maximize();
