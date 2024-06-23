@@ -2,18 +2,22 @@ package dropdawn;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Scanner;
+import java.util.Scanner;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class DropDown {
 
 	public static void main(String[] args) throws InterruptedException 
 	{
-		staticDropDownOperation();
+		autoSuggestion();
 	}
 	
 	public static void staticDropDown() throws InterruptedException
@@ -38,6 +42,46 @@ public class DropDown {
 		}
 		
 	}
+	
+	
+	public static void autoSuggestion() throws InterruptedException
+	{
+		Scanner sc = new Scanner(System.in);
+		String browser = sc.next() ;
+		if (browser.equals("chrome"))
+				{
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.get("https://www.google.com/");
+		driver.findElement(By.xpath("//textarea[@name='q']")).sendKeys("iphone");
+		List<WebElement> l = driver.findElements(By.xpath("//div[@class='OBMEnb']/ul/li"));
+		Thread.sleep(1000);
+		l.get(4).click();
+				}
+		else if (browser.equals("firefox"))
+		{
+		WebDriver driver1 = new FirefoxDriver();
+		driver1.manage().window().maximize();
+		driver1.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver1.get("https://www.google.com/");
+		driver1.findElement(By.xpath("//textarea[@name='q']")).sendKeys("iphone");
+		List<WebElement> l1 = driver1.findElements(By.xpath("//div[@class='OBMEnb']/ul/li"));
+		Thread.sleep(1000);
+		l1.get(4).click();
+		}
+		else if (browser.equals("edge"))
+		{
+		WebDriver driver2 = new EdgeDriver();
+		driver2.manage().window().maximize();
+		driver2.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver2.get("https://www.google.com/");
+		driver2.findElement(By.xpath("//textarea[@name='q']")).sendKeys("iphone");
+		List<WebElement> l2 = driver2.findElements(By.xpath("//div[@class='OBMEnb']/ul/li"));
+		Thread.sleep(1000);
+		l2.get(4).click();
+		}
+		}
 	
 	public static void staticDropDownDeselect() throws InterruptedException
 	{
